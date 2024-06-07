@@ -13,6 +13,10 @@ public class Book {
     @Column(nullable = false,unique = true)
     private String title;
 
+    @ManyToOne
+    @JoinColumn(name = "publisher_id")
+    private Publisher publisher;
+
     public Book() {}
 
     public Book(Long id, String title) {
@@ -29,6 +33,13 @@ public class Book {
         return title;}
     public void setTitle(String title) {
         this.title = title;}
+
+    public Publisher getPublisher() {
+        return publisher;
+    }
+    public void setPublisher(Publisher publisher) {
+        this.publisher = publisher;
+    }
 
     @Override
     public boolean equals(Object o) {
