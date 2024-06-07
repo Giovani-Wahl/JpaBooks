@@ -2,7 +2,9 @@ package com.giovaniwahl.JpaBooks.entities;
 
 import jakarta.persistence.*;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
 @Entity
 @Table(name = "tb_author")
@@ -12,6 +14,9 @@ public class Author {
     private Long id;
     @Column(nullable = false,unique = true)
     private String name;
+
+    @ManyToMany(mappedBy = "authors")
+    private Set<Book> books = new HashSet<>();
 
     public Author() {}
 
@@ -32,6 +37,10 @@ public class Author {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Set<Book> getBooks() {
+        return books;
     }
 
     @Override
