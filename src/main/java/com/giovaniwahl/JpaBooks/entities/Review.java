@@ -13,6 +13,10 @@ public class Review {
     @Column(columnDefinition = "TEXT")
     private String comment;
 
+    @OneToOne
+    @JoinColumn(name = "book_id")
+    private Book book;
+
     public Review() {}
 
     public Review(Long id, String comment) {
@@ -32,6 +36,13 @@ public class Review {
     }
     public void setComment(String comment) {
         this.comment = comment;
+    }
+
+    public Book getBook() {
+        return book;
+    }
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     @Override

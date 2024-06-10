@@ -26,6 +26,9 @@ public class Book {
             inverseJoinColumns = @JoinColumn(name = "author_id"))
     private Set<Author> authors = new HashSet<>();
 
+    @OneToOne(mappedBy = "book",cascade = CascadeType.ALL)
+    private Review review;
+
     public Book() {}
 
     public Book(Long id, String title) {
@@ -52,6 +55,13 @@ public class Book {
 
     public Set<Author> getAuthors() {
         return authors;
+    }
+
+    public Review getReview() {
+        return review;
+    }
+    public void setReview(Review review) {
+        this.review = review;
     }
 
     @Override
